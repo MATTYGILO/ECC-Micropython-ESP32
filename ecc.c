@@ -77,7 +77,7 @@ int AESGCM(uint8_t * input, unsigned size_input,int mode,uint8_t * symetric_key,
 }
 
 
-int ECIES_encrypt_key(uint8_t * input, unsigned size_input,uint8_t * extern_pubkey, uint8_t * output){
+int ECIES_encrypt_key(uint8_t * input, unsigned size_input, uint8_t * extern_pubkey, uint8_t * output){
 	uint8_t ephemeral_pubkey[PUB_KEY_SIZE];
 	uint8_t iv[IV_SIZE];
 	uint8_t symetric_key[32];
@@ -104,7 +104,7 @@ int ECIES_encrypt_key(uint8_t * input, unsigned size_input,uint8_t * extern_pubk
     return 1;
 }
 
-int ECIES_decrypt_key(uint8_t * input,unsigned size_input,uint8_t * pubkey, uint8_t * privkey, uint8_t *output){
+int ECIES_decrypt_key(uint8_t * input, unsigned size_input,uint8_t * pubkey, uint8_t * privkey, uint8_t *output){
 	uint8_t iv[IV_SIZE];
 	uint8_t extern_pubkey[PUB_KEY_SIZE];
 	uint8_t share_secret[CURVE_SIZE];
