@@ -14,6 +14,7 @@
 #include <errno.h>
 #include "bmp180.h"
 
+
 #define WIFI_SSID /*WiFi SSID (must be quoted)*/
 #define WIFI_PASS /*WiFi password (must be quoted)*/
 
