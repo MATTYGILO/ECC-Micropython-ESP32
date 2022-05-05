@@ -16,16 +16,21 @@ STATIC mp_obj_t encrypt_key(const mp_obj_t input, const mp_obj_t size_input, con
 
     // Convert from string to key string array
     uint8_t key_string_array[32];
-    key_string.StringToCharArray(key_string_array, 32);
+    for (int i = 0; i < 32; i++) {
+        key_string_array[i] = uint8_t(key_string[i]);
+    }
 
     // Convert from string to key string array
     uint8_t extern_pubkey_string_array[64];
-    extern_pubkey_string.StringToCharArray(extern_pubkey_string_array, 64);
+    memcpy(extern_pubkey_string_array, extern_pubkey_string, 64);
 
     // Convert from string to key string array
+    char wrapped_key_char_array[132];
+    wrapped_key_string.StringToCharArray(wrapped_key_char_array, 132);
     uint8_t wrapped_key_string_array[132];
-    wrapped_key_string.StringToCharArray(wrapped_key_string_array, 132);
-
+    for (int i = 0; i < 132; i++) {
+        wrapped_key_string_array[i] = uint8_t(wrapped_key_char_array[i]);
+    }
     // Calculate the addition and convert to MicroPython object.
     // return mp_obj_new_int(a + b);
 
