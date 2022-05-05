@@ -61,8 +61,8 @@ jobs:
           echo "cd ./micropython/ports/esp32"
           cd ./micropython/ports/esp32
           
-          make BOARD=GENERIC_S3 USER_C_MODULES=./micropython.cmake
-
+          #make BOARD=GENERIC_S3 USER_C_MODULES=./micropython.cmake
+          make BOARD=GENERIC_S3 USER_C_MODULES=../../../micropython.cmake
           #echo "cd ./boards/esp32/MICROLITE_S3"
           #cd ./boards/esp32/MICROLITE_S3
 
