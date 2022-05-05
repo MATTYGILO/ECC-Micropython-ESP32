@@ -6,25 +6,25 @@
 
 // This is the function which will be called from Python as microecc.encrypt_key(a, b).
 // uint8_t * input, unsigned size_input, uint8_t * extern_pubkey, uint8_t * output
-STATIC mp_obj_t encrypt_key(mp_obj_t input, mp_obj_t size_input, mp_obj_t extern_pubkey, mp_obj_t output) {
+STATIC mp_obj_t encrypt_key(const mp_obj_t input, const mp_obj_t size_input, const mp_obj_t extern_pubkey, const mp_obj_t output) {
     // Extract the ints from the micropython input objects.
 
-    char key_string = mp_obj_get_type_str(input)
+    const char * key_string = mp_obj_get_type_str(input);
     int size_input_int = mp_obj_get_int(size_input);
-    char extern_pubkey_string = mp_obj_get_type_str(extern_pubkey)
-    char wrapped_key_string = mp_obj_get_type_str(output)
+    const char * extern_pubkey_string = mp_obj_get_type_str(extern_pubkey);
+    const char * wrapped_key_string = mp_obj_get_type_str(output);
 
     // Convert from string to key string array
     uint8_t key_string_array[key_string.length()];
-    key_string.toCharArray(key_string_array, key_string.length())
+    key_string.toCharArray(key_string_array, key_string.length());
 
     // Convert from string to key string array
     uint8_t extern_pubkey_string_array[extern_pubkey_string.length()];
-    extern_pubkey_string.toCharArray(extern_pubkey_string_array, extern_pubkey_string.length())
+    extern_pubkey_string.toCharArray(extern_pubkey_string_array, extern_pubkey_string.length());
 
     // Convert from string to key string array
     uint8_t wrapped_key_string_array[wrapped_key_string.length()];
-    wrapped_key_string.toCharArray(wrapped_key_string_array, wrapped_key_string.length())
+    wrapped_key_string.toCharArray(wrapped_key_string_array, wrapped_key_string.length());
 
     // Calculate the addition and convert to MicroPython object.
     // return mp_obj_new_int(a + b);
