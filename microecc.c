@@ -6,7 +6,7 @@
 
 // This is the function which will be called from Python as microecc.encrypt_key(a, b).
 // uint8_t * input, unsigned size_input, uint8_t * extern_pubkey, uint8_t * output
-STATIC mp_obj_t encrypt_key(const mp_obj_t input, const mp_obj_t size_input, const mp_obj_t extern_pubkey, const mp_obj_t output) {
+STATIC mp_obj_t example_encrypt_key(const mp_obj_t input, const mp_obj_t size_input, const mp_obj_t extern_pubkey, const mp_obj_t output) {
     // Extract the ints from the micropython input objects.
 
     const char * key_string = mp_obj_get_type_str(input);
@@ -35,7 +35,7 @@ STATIC mp_obj_t encrypt_key(const mp_obj_t input, const mp_obj_t size_input, con
     return ECIES_encrypt_key(key_string_array, size_input_int, extern_pubkey_string_array, wrapped_key_string_array);
 }
 // Define a Python reference to the function above.Tes
-STATIC MP_DEFINE_CONST_FUN_OBJ_2(encrypt_key_obj, encrypt_key);
+STATIC MP_DEFINE_CONST_FUN_OBJ_2(example_encrypt_key_obj, example_encrypt_key);
 
 // Define all properties of the module.
 // Table entries are key/value pairs of the attribute name (a string)
@@ -44,7 +44,7 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_2(encrypt_key_obj, encrypt_key);
 // optimized to word-sized integers by the build system (interned strings).
 STATIC const mp_rom_map_elem_t example_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_microecc) },
-    { MP_ROM_QSTR(MP_QSTR_add_ints), MP_ROM_PTR(&encrypt_key_obj) },
+    { MP_ROM_QSTR(MP_QSTR_encrypt_key), MP_ROM_PTR(&example_encrypt_key_obj) },
 };
 
 STATIC MP_DEFINE_CONST_DICT(example_module_globals, example_module_globals_table);
