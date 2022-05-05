@@ -117,7 +117,7 @@ int AESGCM(uint8_t * input, unsigned size_input,int mode,uint8_t * symetric_key,
  *				ERROR_SET_KEY			If mbedtls_gcm_setkey failed ie the initialisation of the gcm context
  *				ERROR_GCM_CIPHER		If encryption failed
  */
-int ECIES_encrypt_key(uint8_t * input, unsigned size_input,uint8_t * extern_pubkey, uint8_t * output);
+int ECIES_encrypt_key(uint8_t * input, unsigned size_input, uint8_t * extern_pubkey, uint8_t * output);
 
 /*
  * \brief								ECIES_decrypt_key decript an AESGCM key with ECIES schema.
@@ -137,6 +137,6 @@ int ECIES_encrypt_key(uint8_t * input, unsigned size_input,uint8_t * extern_pubk
  * 				ERROR_BAD_TAG			If the tag computed is not equal to the expected one
  * 				ERROR_GCM_CIPHER 		If gcm encryption failed
  * 							 */
-int ECIES_decrypt_key(uint8_t * input,unsigned size_input,uint8_t * pubkey, uint8_t * privkey, uint8_t *output);
+int ECIES_decrypt_key(uint8_t * input, unsigned size_input,uint8_t * pubkey, uint8_t * privkey, uint8_t *output);
 
 #endif
