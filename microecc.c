@@ -8,14 +8,16 @@
 // uint8_t * input, unsigned size_input, uint8_t * extern_pubkey, uint8_t * output
 STATIC mp_obj_t encrypt_key(mp_obj_t input, mp_obj_t size_input, mp_obj_t extern_pubkey, mp_obj_t output) {
     // Extract the ints from the micropython input objects.
-    // uint8_t a = mp_obj_get_int(a_obj);
-    // uint8_t b = mp_obj_get_int(b_obj);
+     int input_int = mp_obj_get_int(input);
+     int size_input_int = mp_obj_get_int(size_input);
+     int extern_pubkey_int = mp_obj_get_int(extern_pubkey);
+     int output_int = mp_obj_get_int(output);
 
     // Calculate the addition and convert to MicroPython object.
     // return mp_obj_new_int(a + b);
 
     //    uint8_t * input, unsigned size_input, uint8_t * extern_pubkey, uint8_t * output
-    return ECIES_encrypt_key(input, size_input, extern_pubkey, output);
+    return ECIES_encrypt_key(input_int, size_input_int, extern_pubkey_int, output_int);
 }
 // Define a Python reference to the function above.
 STATIC MP_DEFINE_CONST_FUN_OBJ_2(encrypt_key_obj, encrypt_key);
