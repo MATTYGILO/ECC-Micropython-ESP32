@@ -85,10 +85,10 @@ int ECIES_encrypt_key(uint8_t * input, unsigned size_input, uint8_t * extern_pub
 	uint8_t output_gcm[size_input];
 	int r;
 
-	symetric_key_generation(symetric_key,extern_pubkey,ephemeral_pubkey);
+	symetric_key_generation(symetric_key, extern_pubkey, ephemeral_pubkey);
 	//AES encryption of the key
 
-	if((r=AESGCM(input, size_input,MBEDTLS_ENCRYPT,symetric_key,iv,tag,output_gcm))!=1){
+	if((r=AESGCM(input, size_input, MBEDTLS_ENCRYPT, symetric_key, iv, tag, output_gcm))!=1){
 		return r;
 	}
 
