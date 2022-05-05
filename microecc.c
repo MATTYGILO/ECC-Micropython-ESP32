@@ -15,16 +15,16 @@ STATIC mp_obj_t encrypt_key(const mp_obj_t input, const mp_obj_t size_input, con
     const char * wrapped_key_string = mp_obj_get_type_str(output);
 
     // Convert from string to key string array
-    uint8_t key_string_array[key_string.length()];
-    key_string.toCharArray(key_string_array, key_string.length());
+    uint8_t key_string_array[32];
+    key_string.StringToCharArray(key_string_array, 32);
 
     // Convert from string to key string array
-    uint8_t extern_pubkey_string_array[extern_pubkey_string.length()];
-    extern_pubkey_string.toCharArray(extern_pubkey_string_array, extern_pubkey_string.length());
+    uint8_t extern_pubkey_string_array[64];
+    extern_pubkey_string.StringToCharArray(extern_pubkey_string_array, 64);
 
     // Convert from string to key string array
-    uint8_t wrapped_key_string_array[wrapped_key_string.length()];
-    wrapped_key_string.toCharArray(wrapped_key_string_array, wrapped_key_string.length());
+    uint8_t wrapped_key_string_array[132];
+    wrapped_key_string.StringToCharArray(wrapped_key_string_array, 132);
 
     // Calculate the addition and convert to MicroPython object.
     // return mp_obj_new_int(a + b);
