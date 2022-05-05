@@ -46,9 +46,9 @@ jobs:
 #        if: steps.cache-esp-idf.outputs.cache-hit != 'true'
         run: |
           source ./micropython/tools/ci.sh && ci_esp32_idf44_setup
-      - name: Install python3
-        run: |
-          sudo apt-get install python3.10
+#      - name: Install python3
+#        run: |
+#          sudo apt-get install python3.10
       - name: Build micropython cross compiler
         run:  |
           source ./esp-idf/export.sh
