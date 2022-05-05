@@ -1,4 +1,4 @@
-# Elliptic-Curve-on-ESP32
+# Elliptic-Curve-Cryptography-Micropython-ESP32
 
 Takes temperature and pressure's mesure with a BMP180 and ESP32 module.
 
