@@ -16,21 +16,17 @@ STATIC mp_obj_t encrypt_key(const mp_obj_t input, const mp_obj_t size_input, con
 
     // Convert from string to key string array
     uint8_t key_string_array[32];
-    for (int i = 0; i < 32; i++) {
-        key_string_array[i] = uint8_t(key_string[i]);
-    }
+    memcpy(key_string_array, key_string, 32);
 
     // Convert from string to key string array
     uint8_t extern_pubkey_string_array[64];
     memcpy(extern_pubkey_string_array, extern_pubkey_string, 64);
 
     // Convert from string to key string array
-    char wrapped_key_char_array[132];
-    wrapped_key_string.StringToCharArray(wrapped_key_char_array, 132);
     uint8_t wrapped_key_string_array[132];
-    for (int i = 0; i < 132; i++) {
-        wrapped_key_string_array[i] = uint8_t(wrapped_key_char_array[i]);
-    }
+    memcpy(wrapped_key_string_array, wrapped_key_string, 132);
+
+
     // Calculate the addition and convert to MicroPython object.
     // return mp_obj_new_int(a + b);
 
@@ -38,7 +34,7 @@ STATIC mp_obj_t encrypt_key(const mp_obj_t input, const mp_obj_t size_input, con
     // key, 32, extern_pubkey, wraped_key
     return ECIES_encrypt_key(key_string_array, size_input_int, extern_pubkey_string_array, wrapped_key_string_array);
 }
-// Define a Python reference to the function above.
+// Define a Python reference to the function above.Tes
 STATIC MP_DEFINE_CONST_FUN_OBJ_2(encrypt_key_obj, encrypt_key);
 
 // Define all properties of the module.
