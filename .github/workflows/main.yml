@@ -78,9 +78,9 @@ jobs:
         with:
           name: microlite-esp32-s3-firmware
           path: |
-            ./micropython/ports/esp32/build-GENERIC/bootloader/bootloader.bin
-            ./micropython/ports/esp32/build-GENERIC/partition_table/partition-table.bin
-            ./micropython/ports/esp32/build-GENERIC/micropython.bin
+            ./micropython/ports/esp32/build-GENERIC_S3/bootloader/bootloader.bin
+            ./micropython/ports/esp32/build-GENERIC_S3/partition_table/partition-table.bin
+            ./micropython/ports/esp32/build-GENERIC_S3/micropython.bin
 
       - name: Build ESP32 S3 psram support and 8MB Flash firmware
         run: |
@@ -103,6 +103,6 @@ jobs:
         with:
           name: microlite-esp32-s3-spiram-firmware
           path: |
-            ./micropython/ports/esp32/build-GENERIC_S3/bootloader/bootloader.bin
-            ./micropython/ports/esp32/build-GENERIC_S3/partition_table/partition-table.bin
-            ./micropython/ports/esp32/build-GENERIC_S3/micropython.bin
+            ./micropython/ports/esp32/build-GENERIC_S3_SPIRAM/bootloader/bootloader.bin
+            ./micropython/ports/esp32/build-GENERIC_S3_SPIRAM/partition_table/partition-table.bin
+            ./micropython/ports/esp32/build-GENERIC_S3_SPIRAM/micropython.bin
