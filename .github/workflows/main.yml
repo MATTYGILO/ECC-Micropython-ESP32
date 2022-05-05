@@ -65,8 +65,7 @@ jobs:
           echo "cd ./micropython/ports/esp32"
           cd ./micropython/ports/esp32
           
-          #make BOARD=GENERIC_S3 USER_C_MODULES=./micropython.cmake
-          make USER_C_MODULES=../../../../micropython.cmake
+          make BOARD=GENERIC_S3 USER_C_MODULES=../../../../micropython.cmake
           #echo "cd ./boards/esp32/MICROLITE_S3"
           #cd ./boards/esp32/MICROLITE_S3
 
@@ -87,8 +86,13 @@ jobs:
         run: |
           source ./esp-idf/export.sh
 
-          echo "cd ./boards/esp32/MICROLITE_S3_SPIRAM"
-          cd ./boards/esp32/MICROLITE_S3_SPIRAM
+          echo "cd ./micropython/ports/esp32"
+          cd ./micropython/ports/esp32
+          
+          make BOARD=GENERIC_S3_SPIRAM USER_C_MODULES=../../../../micropython.cmake
+          
+          #echo "cd ./boards/esp32/MICROLITE_S3_SPIRAM"
+          #cd ./boards/esp32/MICROLITE_S3_SPIRAM
 
           echo "Building MICROLITE_S3_SPIRAM"
           rm -rf builds
