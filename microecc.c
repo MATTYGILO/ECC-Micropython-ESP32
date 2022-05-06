@@ -62,7 +62,6 @@ STATIC const mp_rom_map_elem_t example_module_globals_table[] = {
 };
 
 STATIC MP_DEFINE_CONST_DICT(example_module_globals, example_module_globals_table);
-STATIC MP_DEFINE_CONST_DICT(stringarg_module_globals, stringarg_module_globals_table);
 
 // Define module object.
 const mp_obj_module_t example_user_cmodule = {
