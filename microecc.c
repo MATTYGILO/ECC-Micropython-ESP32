@@ -5,6 +5,7 @@
 #include "py/objstr.h"
 #include "ecc.h"
 
+#define byteswap(a, b) char tmp = a; a = b; b = tmp;
 
 // uint8_t == bytes
 
