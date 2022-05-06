@@ -1,6 +1,10 @@
 // Include MicroPython API.
+#include <string.h>
+#include "py/obj.h"
 #include "py/runtime.h"
+#include "py/objstr.h"
 #include "ecc.h"
+
 
 // uint8_t == byte
 
