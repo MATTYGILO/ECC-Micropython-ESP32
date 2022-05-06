@@ -3,7 +3,7 @@
 #include "py/obj.h"
 #include "py/runtime.h"
 #include "py/objstr.h"
-#include "ecc.h"
+#include "ecc/ecc.h"
 
 #define byteswap(a, b) char tmp = a; a = b; b = tmp;
 
