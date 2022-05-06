@@ -4,6 +4,18 @@
 
 // uint8_t == byte
 
+STATIC mp_obj_t stringarg_function(const mp_obj_t o_in) {
+    mp_check_self(mp_obj_is_str_or_bytes(o_in));
+    GET_STR_DATA_LEN(o_in, str, str_len);
+    printf("string length: %lu\n", str_len);
+    char out_str[str_len];
+    strcpy(out_str, (char *)str);
+    for(size_t i=0; i < (str_len-1)/2; i++) {
+        byteswap(out_str[i], out_str[str_len-i-1]);
+    }
+    return mp_obj_new_str(out_str, str_len);
+}
+
 // This is the function which will be called from Python as microecc.encrypt_key(a, b).
 // uint8_t * input, unsigned size_input, uint8_t * extern_pubkey, uint8_t * output
 STATIC mp_obj_t example_encrypt_key(const mp_obj_t input, const mp_obj_t size_input, const mp_obj_t extern_pubkey, const mp_obj_t output) {
@@ -36,6 +48,7 @@ STATIC mp_obj_t example_encrypt_key(const mp_obj_t input, const mp_obj_t size_in
 }
 // Define a Python reference to the function above.Tes
 STATIC MP_DEFINE_CONST_FUN_OBJ_2(example_encrypt_key_obj, example_encrypt_key);
+STATIC MP_DEFINE_CONST_FUN_OBJ_1(stringarg_function_obj, stringarg_function);
 
 // Define all properties of the module.
 // Table entries are key/value pairs of the attribute name (a string)
@@ -45,9 +58,11 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_2(example_encrypt_key_obj, example_encrypt_key);
 STATIC const mp_rom_map_elem_t example_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_microecc) },
     { MP_ROM_QSTR(MP_QSTR_encrypt_key), MP_ROM_PTR(&example_encrypt_key_obj) },
+    { MP_ROM_QSTR(MP_QSTR_stringarg), MP_ROM_PTR(&stringarg_function_obj) },
 };
 
 STATIC MP_DEFINE_CONST_DICT(example_module_globals, example_module_globals_table);
+STATIC MP_DEFINE_CONST_DICT(stringarg_module_globals, stringarg_module_globals_table);
 
 // Define module object.
 const mp_obj_module_t example_user_cmodule = {
