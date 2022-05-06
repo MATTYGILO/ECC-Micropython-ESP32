@@ -6,12 +6,12 @@
 #include "ecc.h"
 
 
-// uint8_t == byte
+// uint8_t == bytes
 
 STATIC mp_obj_t stringarg_function(const mp_obj_t o_in) {
     mp_check_self(mp_obj_is_str_or_bytes(o_in));
     GET_STR_DATA_LEN(o_in, str, str_len);
-    printf("string length: %lu\n", str_len);
+    printf("string length: %d", str_len);
     char out_str[str_len];
     strcpy(out_str, (char *)str);
     for(size_t i=0; i < (str_len-1)/2; i++) {
